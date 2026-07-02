@@ -1,0 +1,278 @@
+{
+  "info": {
+    "name": "BOQ and BOQInspection APIs",
+    "_postman_id": "6f12bb82-8b0b-4a4f-8c7d-9c90b7892341",
+    "description": "Collection for BOQ CRUD and separate BOQInspection CRUD endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create BOQ",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contract\": 2,\n  \"item_no\": \"1\",\n  \"bill_no\": \"BILL-001\",\n  \"mrs_ref_no\": \"MRS-101\",\n  \"description\": \"Pipe installation work\",\n  \"unit\": \"m\",\n  \"quantity\": 10,\n  \"unit_rate\": 500\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/create-boq/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "create-boq"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All BOQ",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/list-boq/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "list-boq"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get BOQ by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/list-boq/?id=1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "list-boq"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get BOQ by Contract",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/list-boq/?contract=2",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "list-boq"
+          ],
+          "query": [
+            {
+              "key": "contract",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update BOQ",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"quantity\": 12,\n  \"unit_rate\": 520\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/update-boq/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "update-boq", 
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete BOQ",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/delete-boq/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "delete-boq",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create BOQInspection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"boq\": 1,\n  \"inspected_unit\": \"m\",\n  \"inspected_quantity\": 6,\n  \"inspected_unit_rate\": 500,\n  \"status\": \"pending\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/create-boq-inspection/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "create-boq-inspection"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All BOQInspection",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/list-boq-inspection/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "list-boq-inspection"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get BOQInspection by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/list-boq-inspection/?id=1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "list-boq-inspection"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get BOQInspection by BOQ",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/list-boq-inspection/?boq=1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "list-boq-inspection"
+          ],
+          "query": [
+            {
+              "key": "boq",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update BOQInspection",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"inspected_quantity\": 7,\n  \"status\": \"completed\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/update-boq-inspection/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "update-boq-inspection",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete BOQInspection",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/delete-boq-inspection/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "delete-boq-inspection",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
