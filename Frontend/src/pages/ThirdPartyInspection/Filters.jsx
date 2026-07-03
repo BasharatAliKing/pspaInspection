@@ -219,7 +219,7 @@ const Filters = ({ isOpen, onClose, filterval, handleSiteId }) => {
   const getContracts = async () => {
     try {
       const res = await fetch(
-        `${API_BASE_URL}/api/list-contract/?division_id=${formData?.division}`,
+        `${API_BASE_URL}/api/list-contract/`,
       );
       const data = await res.json();
       if (data?.data) {

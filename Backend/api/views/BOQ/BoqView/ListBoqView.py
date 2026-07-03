@@ -32,27 +32,32 @@ class BOQListView(viewsets.ViewSet):
                 ).create_response()
 
             # All BOQs
-            boqs = BOQ.objects.select_related(
-                "contract"
-            )
+            boqs = BOQ.objects.select_related("contract")
 
             # Filter by contract
             if contract_id:
-                boqs = boqs.filter(
-                    contract_id=contract_id
-                )
+                boqs = boqs.filter(contract_id=contract_id)
+
+            # Summary Counts
+            total = boqs.count()
+            pending = boqs.filter(forInspection__isnull=True).count()
+            verified = boqs.filter(forInspection__isnull=False).count()
 
             boqs = boqs.order_by("-id")
 
-            serializer = BOQSerializer(
-                boqs,
-                many=True
-            )
+            serializer = BOQSerializer(boqs, many=True)
 
             return ApiResponse(
                 status=200,
                 message="All BOQ records fetched.",
-                data=serializer.data,
+                data={
+                    "summary": {
+                        "total": total,
+                        "pending": pending,
+                        "verified": verified
+                    },
+                    "boqs": serializer.data
+                },
                 http_status=200
             ).create_response()
 
