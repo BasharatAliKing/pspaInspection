@@ -12,6 +12,7 @@ class InspectionSiteListView(viewsets.ViewSet):
             division_id = request.query_params.get("division_id")
             zone_id = request.query_params.get("zone_id")
             contract_id = request.query_params.get("contract")
+            status = request.query_params.get("status")
             #------------ Api for apply filter by contract
             # http://127.0.0.1:8000/api/list-inspection-site/?contract=2
             if site_id:
@@ -45,7 +46,16 @@ class InspectionSiteListView(viewsets.ViewSet):
 
             if zone_id:
                 sites = sites.filter(zone_id=zone_id)
+          
+            if status == "verified":
+                sites = sites.filter(
+                    inspectionSite__isnull=False
+             ).distinct()
 
+            elif status == "pending":
+                sites = sites.filter(
+                    inspectionSite__isnull=True
+            ).distinct()
             sites = sites.order_by("-id")
 
             serializer = InspectionSiteSerializer(sites, many=True)

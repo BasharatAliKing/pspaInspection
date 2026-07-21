@@ -426,8 +426,9 @@ class BOQInspection(models.Model):
         on_delete=models.CASCADE,
         related_name="forInspection"
     )
-    
-    site = models.OneToOneField(
+
+#   site = models.OneToOneField(
+    site = models.ForeignKey(
         InspectionSite,
         on_delete=models.CASCADE,
         null=True,

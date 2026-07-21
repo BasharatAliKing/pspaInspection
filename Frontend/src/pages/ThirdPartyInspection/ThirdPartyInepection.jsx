@@ -50,7 +50,7 @@ const ThirdPartyInspection = () => {
       const data = await res.json();
 
       if (data?.data) {
-        setBoqList(data.data);
+        setBoqList(data.data.boqs);
       }
     } catch (error) {
       console.log(error);
